@@ -9,9 +9,8 @@ RUN apt-get clean
 # Copier les fichiers dans le conteneur
 COPY --chown=root:root ./zion.sh /zion.sh
 
-RUN chmod +X /zion.sh
+RUN chmod +x /zion.sh
 #Maintenir le conteneur en vie.
 CMD tail -f /dev/null
 
-ENTRYPOINT ["/bin/sh", "/zion.sh"]
 

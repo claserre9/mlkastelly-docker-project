@@ -9,14 +9,14 @@ services:
       matrix:
         ipv4_address: 10.0.0.4
     cap_add:
-      - NET_ADMIN 
+      - NET_ADMIN
     ports:
       - "2222:22"
-      - "80:80" 
-    restart: always   
+      - "80:80"
+    restart: always
     volumes:
-      - ./zion/matrix:/var/www/html
-
+      - ./zion/zion.sh:/zion.sh
+#    command: [ "/bin/sh", "/zion.sh" ]
 
   neo:
     build: ./neo
@@ -26,11 +26,12 @@ services:
       matrix:
         ipv4_address: 10.0.0.2
     cap_add:
-      - NET_ADMIN 
-    restart: always   
+      - NET_ADMIN
+    restart: always
     volumes:
-      - ./neo/:/etc/neo
-    
+      - ./neo/neo.sh:/neo.sh
+      - ./neo/rsyslog.conf:/etc/rsyslog.conf
+#    command: ["/bin/sh", "/neo.sh"]
 
   smith:
     build: ./smith
@@ -41,10 +42,11 @@ services:
         ipv4_address: 10.0.0.3
     cap_add:
       - NET_ADMIN
-    restart: always   
+    restart: always
     volumes:
-      - ./smith/:/etc/smith
-    
+      - ./smith/smith.sh:/smith.sh
+#    command: [ "/bin/sh", "/smith.sh" ]
+
 networks:
   matrix:
     driver: bridge

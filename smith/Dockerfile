@@ -9,10 +9,8 @@ RUN apt-get clean
 # Copier les fichiers dans le conteneur
 COPY --chown=root:root ./smith.sh /smith.sh
 
-RUN chmod +X /smith.sh
+RUN chmod +x /smith.sh
 #Maintenir le conteneur en vie.
 CMD tail -f /dev/null
-
-ENTRYPOINT ["/bin/sh", "/smith.sh"]
 
 
