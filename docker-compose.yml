@@ -11,7 +11,7 @@ services:
     cap_add:
       - NET_ADMIN 
     ports:
-      - "22:22"
+      - "2222:22"
       - "80:80" 
     restart: always   
     volumes:
