@@ -8,7 +8,7 @@ COPY --chown=root:root ./neo.sh /neo.sh
 COPY --chown=root:root ./rsyslog.conf /etc/rsyslog.conf
 
 # Attribution des permissions appropriees
-RUN chmod +X /neo.sh
+RUN chmod +x /neo.sh
 
-# Point d'entre pour executer le script neo.sh
-ENTRYPOINT ["/bin/sh", "/neo.sh"]
+#Maintenir le conteneur en vie.
+CMD tail -f /dev/null
